@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Questionário de Mapeamento de Desafios na Organização da Casa</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
   <style>
       body {
           font-family: Arial, sans-serif;
@@ -280,10 +281,7 @@
       }
 
       function drawChart(counts) {
-          const ctx = document.createElement('canvas');
-          document.getElementById('chartContainer').innerHTML = '';
-          document.getElementById('chartContainer').appendChild(ctx);
-
+          const ctx = document.getElementById('resultChart');
           const colors = ['#FFC000', '#8ED973', '#44B3E1'];
           const labels = ['Resposta A', 'Resposta B', 'Resposta C'];
           const data = [counts.A, counts.B, counts.C];
@@ -313,11 +311,8 @@
           renderQuiz();
       }
 
-      // Carregar Chart.js via CDN
-      const script = document.createElement('script');
-      script.src = 'https://cdn.jsdelivr.net/npm/chart.js';
-      script.onload = renderQuiz;
-      document.head.appendChild(script);
+      // Inicializar o quiz após o carregamento
+      document.addEventListener('DOMContentLoaded', renderQuiz);
   </script>
 </body>
 </html>
